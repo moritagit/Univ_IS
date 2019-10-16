@@ -1,3 +1,6 @@
+%% title
+\author{37-196360 \quad 森田涼介}
+
 
 %% packages and libraries
 \usepackage{amsmath, amssymb, amsfonts, mathtools, cases, physics, mathrsfs}
@@ -121,4 +124,20 @@
 %unit of formulas 〔roman〕
 \newcommand{\unitis}[1]{%
 	\text{〔\si{#1}〕}
+	}
+
+
+%% setting for listings
+\newtcbinputlisting[auto counter]{\reportlisting}[3][]{%
+	listing file = {#3},
+	listing options = {language=python, style=tcblatex, numbers=left, numberstyle=\tiny},
+	listing only,
+	breakable,
+	toprule at break = 0mm,
+	bottomrule at break = 0mm,
+	left = 6mm,
+	sharp corners,
+	drop shadow,
+	title = Listings \thetcbcounter : \texttt{#2},
+	label = #1,
 	}
