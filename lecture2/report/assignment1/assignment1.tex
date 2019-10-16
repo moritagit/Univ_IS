@@ -4,7 +4,59 @@
 
 \section*{宿題1}
 
+\(\bm{x} \in \mathbb{R}^d\)についての関数\(f\)を，
+\begin{equation}
+    f(\bm{x}) = \frac{1}{2} \bm{x}^\mathrm{T} \bm{A} \bm{x}
+\end{equation}
+とする。
+ここで，\(\bm{A}\)は正定値対称行列である。
+この\(f\)の厳密直線探索の最適なステップ幅は，
+\(f\qty(\bm{x}_k - \varepsilon_k \nabla f(\bm{x}_k))\)
+を最小にする\(\varepsilon_k\)を考えることにより，
+\begin{equation}
+    \varepsilon_k
+        = \frac{||\nabla f(\bm{x}_k)||^2}{\nabla f(\bm{x}_k)^\mathrm{T} \bm{A} \nabla f(\bm{x}_k)}
+        = \frac{\bm{x}_k^\mathrm{T} \bm{A}^2 \bm{x}_k}{\bm{x}_k^\mathrm{T} \bm{A}^3 \bm{x}_k}
+\end{equation}
+で与えられる（\(\nabla f(\bm{x}) = \bm{A} \bm{x} \)）。
 
+いま，\(f\)の真の減少量を，
+\begin{equation}
+    g(\varepsilon_k) = f(\bm{x}_k) - \varepsilon_k \nabla f(\bm{x}_k) - f(\bm{x}_k)
+\end{equation}
+とすると，
+Armijo規準より，\(\alpha \in \qty(0,\ 1)\)について，
+\begin{equation}
+    g(\varepsilon_k) \le \alpha \varepsilon_k g^\prime (0)
+\end{equation}
+が成り立つ。
+ここで，\(g\)を\(\varepsilon_k\)についてTaylor展開することで，
+\begin{equation}
+    g^\prime (0) = - ||\nabla f(\bm{x}_k)||^2
+\end{equation}
+を得る。ここで，
+\begin{align}
+    f(\bm{x}_k - \varepsilon_k \nabla f(\bm{x}_k))
+        & = \frac{1}{2} (\bm{x}_k - \varepsilon_k \nabla f(\bm{x}_k))^\mathrm{T} \bm{A} (\bm{x}_k - \varepsilon_k \nabla f(\bm{x}_k)) \\
+        & = \frac{1}{2} \bm{x}_k^\mathrm{T} \bm{A} \bm{x}_k - \varepsilon_k \nabla f(\bm{x}_k)^\mathrm{T} \bm{A} \bm{x}_k + \frac{1}{2} \varepsilon_k^2 \nabla f(\bm{x}_k)^\mathrm{T} \bm{A} \nabla f(\bm{x}_k)
+\end{align}
+から，結局Armijo規準は次のように整理される。
+\begin{align}
+    & g(\varepsilon_k) \le \alpha \varepsilon_k g^\prime (0) \\
+    & \qty(\frac{1}{2} \bm{x}_k^\mathrm{T} \bm{A} \bm{x}_k - \varepsilon_k \nabla f(\bm{x}_k)^\mathrm{T} \bm{A} \bm{x}_k + \frac{1}{2} \varepsilon_k^2 \nabla f(\bm{x}_k)^\mathrm{T} \bm{A} \nabla f(\bm{x}_k)) - \frac{1}{2} \bm{x}_k^\mathrm{T} \bm{A} \bm{x}_k \le - \alpha \varepsilon_k ||\nabla f(\bm{x}_k)||^2 \\
+    & \qty(\frac{1}{2} \nabla f(\bm{x}_k)^\mathrm{T} \bm{A} \nabla f(\bm{x}_k)) \varepsilon_k^2 \le (1 - \alpha) ||\nabla f(\bm{x}_k)||^2 \varepsilon_k
+\end{align}
+\(\varepsilon_k > 0,\ \bm{A} > \bm{O}\)から，
+\begin{equation}
+    \varepsilon_k \le 2(1 - \alpha) \frac{||\nabla f(\bm{x}_k)||^2}{\nabla f(\bm{x}_k)^\mathrm{T} \bm{A} \nabla f(\bm{x}_k)}
+\end{equation}
+よって，\(\alpha = 1/2\)のArmijo規準を満たす最大の\(\varepsilon_k\)は，
+\begin{equation}
+    \varepsilon_k
+        = \frac{||\nabla f(\bm{x}_k)||^2}{\nabla f(\bm{x}_k)^\mathrm{T} \bm{A} \nabla f(\bm{x}_k)}
+        = \frac{\bm{x}_k^\mathrm{T} \bm{A}^2 \bm{x}_k}{\bm{x}_k^\mathrm{T} \bm{A}^3 \bm{x}_k}
+\end{equation}
+となり，厳密直線探索の最適なステップ幅と一致する。
 
 
 \end{document}
