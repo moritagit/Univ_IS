@@ -1,0 +1,124 @@
+
+%% packages and libraries
+\usepackage{amsmath, amssymb, amsfonts, mathtools, cases, physics, mathrsfs}
+\usepackage{physics}
+\usepackage{fancyhdr, lastpage}
+\usepackage{titlesec}
+\usepackage{hyperref}
+\usepackage{url}
+\usepackage{pxjahyper}
+\usepackage{overcite}
+\usepackage{pxrubrica}
+\usepackage[table]{xcolor}
+\usepackage{longtable, float, multirow, array, listliketab, enumitem, tabularx}
+\usepackage{tcolorbox}
+\tcbuselibrary{skins, listings, breakable}
+\usepackage{listings, plistings}
+\usepackage{comment}
+\usepackage{graphicx}
+\usepackage{subcaption, wrapfig}
+\usepackage{tikz}
+\usetikzlibrary{calc, patterns, decorations, decorations.pathmorphing, angles, backgrounds, shadows}
+\usepackage{pdfpages}
+\usepackage{import, grffile}
+\usepackage{standalone}
+\usepackage{xparse}
+\usepackage[T1]{fontenc}
+\usepackage{textcomp}
+\usepackage[utf8]{inputenc}
+\usepackage{lmodern}
+\usepackage{mathptmx}
+\usepackage[scaled]{helvet}
+\renewcommand{\ttdefault}{pcr}
+\usepackage[deluxe]{otf}
+\usepackage[noalphabet]{pxchfon}
+\usepackage{bm}
+\usepackage{lscape}
+\usepackage{siunitx}
+\usepackage{bigstrut}
+
+
+%% set up for hyperref
+\hypersetup{
+	bookmarksnumbered = true,
+	hidelinks,
+	colorlinks = true,
+	linkcolor = black,
+	urlcolor = cyan,
+	citecolor = black,
+	filecolor = magenta,
+	setpagesize = false,
+	pdftitle = {},
+	pdfauthor = {R.Morita},
+	pdfkeywords = {},
+	}
+
+
+%% set up for siunitx
+\sisetup{%
+	%detect-family = true,
+	detect-inline-family = math,
+	detect-weight = true,
+	detect-inline-weight = math,
+	%input-product = *,
+	quotient-mode = fraction,
+	fraction-function = \frac,
+	inter-unit-product = \ensuremath{\hspace{-1.5pt}\cdot\hspace{-1.5pt}},
+	per-mode = symbol,%
+	product-units = single,%
+	}
+
+
+%% fonts
+\setminchofont{ipam.ttf}
+\setgothicfont{ipag.ttf}
+\fontsize{14Q}{30H}
+
+
+%% layout
+%space between letters
+\kanjiskip 0zw plus 1zw minus 0zw
+\xkanjiskip 0.25zw plus 1pt minus 1pt
+%line skip
+\setlength{\lineskiplimit}{2pt}
+\setlength{\lineskip}{2pt}
+%indent
+\setlength{\parindent}{1zw}
+\setlength{\mathindent}{5zw}
+
+
+%header & footer
+\fancypagestyle{jsarticledefault}{%
+	%reset
+	\fancyhf{}
+	%layout
+	\setlength{\textwidth}{453pt}
+	\setlength{\hoffset}{0pt}
+	\setlength{\oddsidemargin}{0pt}
+	\setlength{\marginparsep}{18pt}
+	\setlength{\marginparwidth}{18pt}
+	\setlength{\textheight}{634pt}
+	\setlength{\voffset}{0pt}
+	\setlength{\topmargin}{4pt}
+	\setlength{\headheight}{20pt}
+	\setlength{\headsep}{18pt}
+	\setlength{\footskip}{28pt}
+	%header
+	\renewcommand{\headrule}{}
+	%footer
+	\cfoot{\thepage}
+	}
+
+
+%put citation mark on index zone
+\renewcommand{\citeform}[1]{[#1]}
+
+
+%hyphen for math mode
+\DeclareMathSymbol{\mhyphen}{\mathalpha}{operators}{`-}
+
+
+%unit of formulas 〔roman〕
+\newcommand{\unitis}[1]{%
+	\text{〔\si{#1}〕}
+	}
